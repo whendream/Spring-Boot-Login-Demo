@@ -14,10 +14,10 @@ public class UserService {
 
     public boolean verifyUser(User user) {
 
-        if ("jwen".equals(user.getName()) && "1234".equals(user.getPassword())) {
-            return true;
-        } else {
+        if (userRepository.findByNameAndPassword(user.getName(), user.getPassword()).isEmpty()) {
             return false;
+        } else {
+            return true;
         }
 
     }
